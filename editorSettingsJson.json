@@ -1,0 +1,23 @@
+{
+    "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+    "workbench.iconTheme": "vscode-icons",
+    "security.workspace.trust.untrustedFiles": "open",
+    "vsicons.dontShowNewVersionMessage": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ],
+    "[vue]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}

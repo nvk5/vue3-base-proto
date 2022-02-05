@@ -1,30 +1,49 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+	<div class="wrapper">
+		<div class="wrapper__content">
+			<div class="view">
+				<div class="container">
+					<Form @handleSubmit="handleSubmit"/>
+					<TweetList :tweets="items"></TweetList>
+				</div>
+			</div>
+		</div>
   </div>
-  <router-view/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import TweetList from '@/components/List.vue';
+import Form from '@/components/Form.vue';
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+export default {
+	components: {
+		TweetList,
+		Form,
+	},
+	data() {
+		return {
+			items: [
+				{
+					id: 1,
+					body: 'Hello Vue3',
+					likes: 12,
+					avatar: 'https://avatars.dicebear.com/api/male/1.svg',
+					date: new Date(Date.now()).toLocaleString(),
+				},
+				{
+					id: 2,
+					body: 'Hello World',
+					likes: 6,
+					avatar: 'https://avatars.dicebear.com/api/male/1.svg',
+					date: new Date(Date.now()).toLocaleString(),
+				},
+			],
+		};
+	},
+	methods: {
+		handleSubmit(data) {
+			this.items.push(data);
+		},
+	},
+};
+</script>
