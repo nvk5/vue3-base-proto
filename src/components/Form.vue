@@ -12,28 +12,31 @@
 
 <script>
 import TextArea from '@/components/UI/TextArea.vue';
+import { ref } from 'vue';
 
 export default {
 	components: {
 		TextArea,
 	},
-	data() {
-		return {
-			body: '',
-		};
-	},
-	methods: {
-		onSubmit() {
-			this.$emit('handleSubmit', {
-				id: Math.round(Math.random() * 30),
-				avatar: `https://avatars.dicebear.com/api/male/${Date.now()}.svg`,
-				body: this.body,
-				likes: 0,
-				date: new Date(Date.now()).toLocaleString(),
-			});
+	emits: ['handleSubmit'],
 
-			this.body = '';
-		},
+	setup(props, { emit }) {
+		const body = ref('');
+
+		const emitData = () => emit('handleSubmit', {
+			id: Math.round(Math.random() * 30),
+			avatar: `https://avatars.dicebear.com/api/male/${Date.now()}.svg`,
+			body: body.value,
+			likes: 0,
+			date: new Date(Date.now()).toLocaleString(),
+		});
+
+		const onSubmit = () => {
+			emitData();
+			body.value = '';
+		};
+
+		return { body, onSubmit };
 	},
 };
 </script>

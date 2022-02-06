@@ -14,36 +14,35 @@
 <script>
 import TweetList from '@/components/List.vue';
 import Form from '@/components/Form.vue';
+import { ref } from 'vue';
 
 export default {
 	components: {
 		TweetList,
 		Form,
 	},
-	data() {
-		return {
-			items: [
-				{
-					id: 1,
-					body: 'Hello Vue3',
-					likes: 12,
-					avatar: 'https://avatars.dicebear.com/api/male/1.svg',
-					date: new Date(Date.now()).toLocaleString(),
-				},
-				{
-					id: 2,
-					body: 'Hello World',
-					likes: 6,
-					avatar: 'https://avatars.dicebear.com/api/male/1.svg',
-					date: new Date(Date.now()).toLocaleString(),
-				},
-			],
-		};
-	},
-	methods: {
-		handleSubmit(data) {
-			this.items.push(data);
-		},
+
+	setup() {
+		const items = ref([
+			{
+				id: 1,
+				body: 'Hello Vue3',
+				likes: 12,
+				avatar: 'https://avatars.dicebear.com/api/male/1.svg',
+				date: new Date(Date.now()).toLocaleString(),
+			},
+			{
+				id: 2,
+				body: 'Hello World',
+				likes: 6,
+				avatar: 'https://avatars.dicebear.com/api/male/1.svg',
+				date: new Date(Date.now()).toLocaleString(),
+			},
+		]);
+
+		const handleSubmit = (item) => items.value.push(item);
+
+		return { items, handleSubmit };
 	},
 };
 </script>
