@@ -1,4 +1,4 @@
-# Vue3 (Vue-cli) project structure with options API
+# Vue3 (Vue-cli) project structure with composition API
 
 ## About
 1. Исп. airbnb eslint config вместо standart
